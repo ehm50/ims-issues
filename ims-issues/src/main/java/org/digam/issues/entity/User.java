@@ -2,6 +2,7 @@ package org.digam.issues.entity;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.json.bind.annotation.JsonbTransient;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -12,9 +13,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "user_detail")
 public class User implements Serializable {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -24,6 +23,7 @@ public class User implements Serializable {
 	@Size(min = 2, max = 20)
 	private String name;
 
+	@JsonbTransient
 	@OneToMany(mappedBy = "assignedTo")
 	private List<Issue> issues;
 
@@ -57,6 +57,11 @@ public class User implements Serializable {
 
 	public void setIssues(List<Issue> issues) {
 		this.issues = issues;
+	}
+
+	@Override
+	public String toString() {
+		return "User{" + "id=" + id + ", name=" + name + '}';
 	}
 
 }
