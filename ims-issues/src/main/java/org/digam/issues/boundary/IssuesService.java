@@ -1,8 +1,11 @@
 package org.digam.issues.boundary;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -17,9 +20,9 @@ public class IssuesService {
 	@PersistenceContext
 	private EntityManager em;
 
-	public List<Issue> getAll() {
+	public Set<Issue> getAll() {
 		List<Issue> list = em.createQuery("FROM Issue i", Issue.class).getResultList();
-		return list;
+		return new LinkedHashSet(list);
 	}
 
 	public Optional<Issue> get(Long id) {

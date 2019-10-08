@@ -1,7 +1,6 @@
 package org.digam.issues.boundary;
 
 import java.net.URI;
-import java.util.List;
 import java.util.Optional;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -13,13 +12,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
-import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.digam.issues.entity.Issue;
-
 
 @Path("issues")
 public class IssuesResource {
@@ -29,10 +26,7 @@ public class IssuesResource {
 
 	@GET
 	public Response getAll() {
-		List<Issue> issues = service.getAll();
-		GenericEntity<List<Issue>> list = new GenericEntity<List<Issue>>(issues) {
-		};
-		return Response.ok(list).build();
+		return Response.ok(service.getAll()).build();
 	}
 
 	@GET
