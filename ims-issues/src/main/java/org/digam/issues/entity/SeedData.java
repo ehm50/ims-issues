@@ -20,7 +20,7 @@ public class SeedData {
 	@PostConstruct
 	public void init() {
 		// Dummy data to begin with
-		User adminUser = new User(1L, "Admin");
+		User adminUser = new User(1L, "Guest");
 		em.persist(adminUser);
 
 		Issue issue1 = new Issue("Fix A", adminUser);
@@ -28,7 +28,7 @@ public class SeedData {
 		issue1.setCreated(LocalDateTime.now());
 		em.persist(issue1);
 
-		User guestUser = new User(2L, "Guest");
+		User guestUser = new User(2L, "Admin");
 		em.persist(guestUser);
 		Issue issue2 = new Issue("Fix B", guestUser);
 		issue2.setDescription("fix is required for B");

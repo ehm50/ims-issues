@@ -30,7 +30,7 @@ public class IssuesService {
 		return found != null ? Optional.of(found) : Optional.empty();
 	}
 
-	public void add(@Valid Issue newIssue) {
+	public void add(Issue newIssue) {
 		newIssue.setCreated(LocalDateTime.now());
 		User owner = em.find(User.class, newIssue.getAssignedTo().getId());
 

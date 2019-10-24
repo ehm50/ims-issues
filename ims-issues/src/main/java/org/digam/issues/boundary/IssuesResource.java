@@ -26,7 +26,7 @@ public class IssuesResource {
 
 	@GET
 	public Response getAll() {
-		return Response.ok(service.getAll()).build();
+		return Response.ok(service.getAll()).type(MediaType.APPLICATION_JSON).build();
 	}
 
 	@GET
