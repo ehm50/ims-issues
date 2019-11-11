@@ -17,6 +17,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
 import org.digam.issues.entity.Issue;
+import org.digam.security.boundary.JWTRequired;
 
 @Path("issues")
 public class IssuesResource {
@@ -25,6 +26,7 @@ public class IssuesResource {
 	private IssuesService service;
 
 	@GET
+	@JWTRequired
 	public Response getAll() {
 		return Response.ok(service.getAll()).type(MediaType.APPLICATION_JSON).build();
 	}
